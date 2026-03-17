@@ -308,30 +308,136 @@ h1 {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.1rem;
+}
+
+.reviews-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.reviews-section::before,
+.reviews-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(44px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.reviews-section::before {
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  right: 12%;
+  background: rgba(56, 189, 248, 0.18);
+}
+
+.reviews-section::after {
+  width: 300px;
+  height: 300px;
+  left: 8%;
+  bottom: -120px;
+  background: rgba(129, 140, 248, 0.16);
 }
 
 .review-card {
   border-radius: 18px;
-  border: 1px solid var(--surface-border);
-  background: linear-gradient(160deg, rgba(30, 41, 59, 0.65), rgba(15, 23, 42, 0.52));
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background:
+    linear-gradient(160deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.56)),
+    rgba(15, 23, 42, 0.52);
   backdrop-filter: blur(10px);
   padding: 1.5rem 1.25rem;
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(2, 6, 23, 0.35);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  animation: review-card-in 680ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.review-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(130deg, rgba(56, 189, 248, 0.15), rgba(139, 92, 246, 0.12));
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.review-card::after {
+  content: "";
+  position: absolute;
+  top: -28%;
+  left: -20%;
+  width: 60%;
+  height: 170%;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(224, 242, 254, 0.02) 35%,
+    rgba(224, 242, 254, 0.28) 50%,
+    rgba(224, 242, 254, 0.02) 65%,
+    transparent 80%
+  );
+  transform: translateX(-200%) rotate(12deg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.review-card:nth-child(1) {
+  animation-delay: 70ms;
+}
+
+.review-card:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.review-card:nth-child(3) {
+  animation-delay: 230ms;
+}
+
+.review-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .review-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(96, 165, 250, 0.55);
-  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.45);
+  transform: translateY(-10px);
+  border-color: rgba(125, 211, 252, 0.5);
+  box-shadow: 0 26px 48px rgba(2, 6, 23, 0.55), 0 0 24px rgba(59, 130, 246, 0.25);
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}
+
+.review-card:hover::after {
+  opacity: 1;
+  animation: review-sheen 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .review-stars {
-  color: #facc15;
+  color: #fde047;
   font-size: 1.1rem;
   letter-spacing: 0.12em;
   margin-bottom: 0.9rem;
+  text-shadow: 0 0 20px rgba(250, 204, 21, 0.22);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.review-card:hover .review-stars {
+  transform: translateY(-2px) scale(1.03);
+  text-shadow: 0 0 26px rgba(250, 204, 21, 0.35);
 }
 
 .review-text {
@@ -351,6 +457,23 @@ h1 {
   color: #93c5fd;
   font-size: 0.92rem;
   letter-spacing: 0.03em;
+}
+
+@keyframes review-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes review-sheen {
+  from {
+    transform: translateX(-200%) rotate(12deg);
+  }
+
+  to {
+    transform: translateX(260%) rotate(12deg);
+  }
 }
 
 .glow {
@@ -650,6 +773,21 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .review-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .review-card::after {
+    display: none;
+  }
+
+  .review-stars {
+    transition: none;
+  }
+
   .process-step {
     animation: none;
     opacity: 1;
