@@ -43,6 +43,32 @@ body {
   padding: clamp(2rem, 4vw, 3.25rem);
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 80px rgba(2, 6, 23, 0.55);
+  position: relative;
+  overflow: hidden;
+  animation: hero-card-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(224, 242, 254, 0.04) 38%,
+    rgba(224, 242, 254, 0.18) 50%,
+    rgba(224, 242, 254, 0.04) 62%,
+    transparent 80%
+  );
+  transform: translateX(-180%);
+  animation: hero-sheen 7.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .brand {
@@ -146,6 +172,38 @@ h1 {
   align-items: center;
   text-align: center;
   padding: 1.4rem 1rem;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: section-card-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.stats-container .stat-card:nth-child(1) {
+  animation-delay: 70ms;
+}
+
+.stats-container .stat-card:nth-child(2) {
+  animation-delay: 140ms;
+}
+
+.stats-container .stat-card:nth-child(3) {
+  animation-delay: 210ms;
+}
+
+.stats-container .stat-card:nth-child(4) {
+  animation-delay: 280ms;
+}
+
+.services-grid .service-card:nth-child(1) {
+  animation-delay: 110ms;
+}
+
+.services-grid .service-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.services-grid .service-card:nth-child(3) {
+  animation-delay: 290ms;
 }
 
 .stat-number {
@@ -157,6 +215,19 @@ h1 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: stat-number-pulse 3.4s ease-in-out infinite;
+}
+
+.stats-container .stat-card:nth-child(2) .stat-number {
+  animation-delay: 0.35s;
+}
+
+.stats-container .stat-card:nth-child(3) .stat-number {
+  animation-delay: 0.7s;
+}
+
+.stats-container .stat-card:nth-child(4) .stat-number {
+  animation-delay: 1.05s;
 }
 
 .stat-label {
@@ -178,6 +249,20 @@ h1 {
   letter-spacing: 0.12em;
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
+  display: inline-block;
+  position: relative;
+}
+
+.section-kicker::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.22rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(147, 197, 253, 0.1), rgba(103, 232, 249, 0.85), rgba(147, 197, 253, 0.1));
+  background-size: 220% 100%;
+  animation: kicker-scan 4.5s linear infinite;
 }
 
 .services-header h2,
@@ -224,6 +309,26 @@ h1 {
   padding: 1.35rem 1.1rem;
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: section-card-in 720ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.why-grid .why-card:nth-child(1) {
+  animation-delay: 90ms;
+}
+
+.why-grid .why-card:nth-child(2) {
+  animation-delay: 170ms;
+}
+
+.why-grid .why-card:nth-child(3) {
+  animation-delay: 250ms;
+}
+
+.why-grid .why-card:nth-child(4) {
+  animation-delay: 330ms;
 }
 
 .why-icon {
@@ -270,6 +375,22 @@ h1 {
   background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(10px);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: section-card-in 760ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.portfolio-grid .portfolio-card:nth-child(1) {
+  animation-delay: 110ms;
+}
+
+.portfolio-grid .portfolio-card:nth-child(2) {
+  animation-delay: 210ms;
+}
+
+.portfolio-grid .portfolio-card:nth-child(3) {
+  animation-delay: 310ms;
 }
 
 .portfolio-card img {
@@ -378,13 +499,15 @@ h1 {
 .review-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle at 14% 12%, rgba(224, 242, 254, 0.2), transparent 34%),
-    linear-gradient(130deg, rgba(56, 189, 248, 0.1), var(--review-accent-soft));
-  opacity: 0;
-  transition: opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  top: -18px;
+  right: -18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--review-accent), var(--review-accent-2));
+  transform: scale(1);
+  transform-origin: 100% 0;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   pointer-events: none;
   z-index: 0;
 }
@@ -422,7 +545,7 @@ h1 {
   animation-delay: 230ms;
 }
 
-.review-card > * {
+.review-card > :not(.review-go-corner) {
   position: relative;
   z-index: 2;
 }
@@ -434,12 +557,52 @@ h1 {
 }
 
 .review-card:hover::before {
-  opacity: 1;
+  transform: scale(24);
 }
 
 .review-card:hover::after {
   opacity: 1;
   animation: review-sheen 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.review-go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  border-radius: 0 18px 0 30px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.95));
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 3;
+  pointer-events: none;
+  transition: transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+.review-go-arrow {
+  margin-top: -3px;
+  margin-right: -3px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.review-card:hover .review-go-corner {
+  transform: translate(-1px, 1px);
+  background: linear-gradient(135deg, var(--review-accent), var(--review-accent-2));
+  border-left-color: rgba(255, 255, 255, 0.28);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.review-card:hover .review-go-arrow {
+  color: #ffffff;
+  transform: translate(1px, -1px) scale(1.08);
 }
 
 .review-card--hospitality {
@@ -508,7 +671,8 @@ h1 {
 
 .review-card:hover .review-stars {
   transform: translateY(-2px) scale(1.03);
-  text-shadow: 0 0 26px var(--review-accent-soft);
+  color: #ffffff;
+  text-shadow: 0 0 26px rgba(255, 255, 255, 0.35);
 }
 
 .review-text {
@@ -520,7 +684,21 @@ h1 {
 }
 
 .review-card:hover .review-text {
-  color: var(--text-hover);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.review-card:hover .review-name {
+  color: #ffffff;
+}
+
+.review-card:hover .review-type {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.review-card:hover .review-tag {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
 }
 
 .review-name {
@@ -533,6 +711,72 @@ h1 {
   color: var(--review-accent-2);
   font-size: 0.92rem;
   letter-spacing: 0.03em;
+}
+
+@keyframes hero-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-sheen {
+  0%,
+  80%,
+  100% {
+    transform: translateX(-180%);
+  }
+
+  40% {
+    transform: translateX(190%);
+  }
+}
+
+@keyframes section-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stat-number-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(56, 189, 248, 0));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.35));
+  }
+}
+
+@keyframes kicker-scan {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes glow-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(12px, -14px, 0) scale(1.05);
+  }
+
+  100% {
+    transform: translate3d(-10px, 10px, 0) scale(0.96);
+  }
 }
 
 @keyframes review-card-in {
@@ -575,6 +819,7 @@ h1 {
   background: rgba(56, 189, 248, 0.35);
   top: 8%;
   left: 10%;
+  animation: glow-drift 13s ease-in-out infinite;
 }
 
 .glow-two {
@@ -583,6 +828,7 @@ h1 {
   background: rgba(129, 140, 248, 0.28);
   right: 8%;
   bottom: 10%;
+  animation: glow-drift 16s ease-in-out infinite reverse;
 }
 
 @media (max-width: 980px) {
@@ -859,6 +1105,25 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-card,
+  .stat-card,
+  .service-card,
+  .why-card,
+  .portfolio-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-card::before,
+  .section-kicker::after,
+  .glow-one,
+  .glow-two,
+  .stat-number {
+    animation: none;
+  }
+
   .review-card {
     animation: none;
     opacity: 1;
@@ -868,6 +1133,15 @@ h1 {
 
   .review-card::after {
     display: none;
+  }
+
+  .review-card:hover::before {
+    transform: scale(1);
+  }
+
+  .review-go-corner,
+  .review-go-arrow {
+    transition: none;
   }
 
   .review-stars {
