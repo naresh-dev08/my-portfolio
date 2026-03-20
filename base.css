@@ -1,0 +1,87 @@
+:root {
+  --bg-base: #050a16;
+  --bg-elevated: #091225;
+  --surface-strong: rgba(14, 23, 43, 0.9);
+  --surface-soft: rgba(17, 30, 53, 0.78);
+  --surface-tint: rgba(21, 38, 68, 0.72);
+  --border-soft: rgba(135, 168, 237, 0.22);
+  --border-strong: rgba(119, 225, 255, 0.54);
+  --text-heading: #f3f7ff;
+  --text-main: #d3e0fb;
+  --text-soft: #95a8ca;
+  --accent-cyan: #66e6ff;
+  --accent-blue: #4e7dff;
+  --accent-indigo: #8f7bff;
+  --accent-green: #4ff0be;
+  --shadow-card: 0 18px 44px rgba(1, 7, 22, 0.52);
+  --shadow-lift: 0 26px 62px rgba(1, 7, 22, 0.64);
+  --radius-xl: 1.55rem;
+  --radius-lg: 1.2rem;
+  --radius-md: 0.95rem;
+  --container-max: 1140px;
+  --space-2xs: 0.45rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.35rem;
+  --space-lg: 1.8rem;
+  --space-xl: 2.5rem;
+  --section-space: clamp(3.8rem, 8vw, 6.4rem);
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  line-height: 1.65;
+  color: var(--text-main);
+  text-rendering: geometricPrecision;
+  background:
+    radial-gradient(1300px 800px at 10% -12%, rgba(76, 97, 255, 0.2), transparent 56%),
+    radial-gradient(980px 720px at 88% -16%, rgba(35, 218, 255, 0.17), transparent 56%),
+    linear-gradient(155deg, #0a142a, #050913 62%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-heading);
+  font-family: "Sora", "Manrope", sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+}
+
+.text-gradient {
+  display: block;
+  margin-top: 0.2rem;
+  background: linear-gradient(125deg, #e8f2ff 8%, #9befff 36%, #98a7ff 66%, #4ff0be 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
