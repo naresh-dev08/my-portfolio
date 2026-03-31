@@ -1,3 +1,4 @@
+/* Design Tokens */
 :root {
   --bg-base: #050a16;
   --bg-elevated: #091225;
@@ -27,12 +28,12 @@
   --space-xl: 2.5rem;
   --section-space: clamp(3.8rem, 8vw, 6.4rem);
   --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-base: "Manrope", "Segoe UI", sans-serif;
+  --font-heading: "Sora", "Manrope", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
+/* Base Reset */
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -46,7 +47,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: var(--font-base);
   line-height: 1.65;
   color: var(--text-main);
   text-rendering: geometricPrecision;
@@ -56,6 +57,13 @@ body {
     linear-gradient(155deg, #0a142a, #050913 62%);
 }
 
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Typography */
 a {
   color: inherit;
   text-decoration: none;
@@ -72,7 +80,7 @@ h1,
 h2,
 h3 {
   color: var(--text-heading);
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   letter-spacing: -0.02em;
   line-height: 1.18;
 }

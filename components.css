@@ -1,3 +1,4 @@
+/* Ambient Visuals */
 .orb {
   position: absolute;
   border-radius: 999px;
@@ -39,6 +40,7 @@
   mask-image: radial-gradient(circle at center, black 24%, transparent 88%);
 }
 
+/* Shared Text Blocks */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -69,6 +71,7 @@
   font-size: clamp(0.98rem, 2.2vw, 1.08rem);
 }
 
+/* Header and Navigation */
 .site-header {
   position: sticky;
   top: 0;
@@ -87,7 +90,7 @@
 }
 
 .logo {
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.28rem;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -128,6 +131,7 @@
   transform: scaleX(1);
 }
 
+/* Buttons */
 .btn {
   position: relative;
   overflow: hidden;
@@ -184,6 +188,7 @@
   box-shadow: 0 12px 28px rgba(17, 46, 97, 0.42);
 }
 
+/* Hero Components */
 .hero-copy {
   padding-block: clamp(0.4rem, 1vw, 0.85rem);
 }
@@ -260,7 +265,7 @@
 }
 
 .metric-value {
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(1.25rem, 2.9vw, 1.95rem);
   color: #eef6ff;
 }
@@ -282,11 +287,11 @@
 }
 
 .chart-bar {
+  position: relative;
+  overflow: hidden;
   height: 0.56rem;
   border-radius: 999px;
   background: rgba(132, 158, 214, 0.18);
-  position: relative;
-  overflow: hidden;
 }
 
 .chart-bar::before {
@@ -320,6 +325,7 @@
   color: #def8ff;
 }
 
+/* Shared Glass Components */
 .glass-strip {
   border-radius: 999px;
   border: 1px solid rgba(129, 163, 227, 0.2);
@@ -395,6 +401,7 @@
   opacity: 1;
 }
 
+/* Content Cards */
 .stat-card {
   min-height: 152px;
   display: grid;
@@ -418,20 +425,12 @@
   font-weight: 600;
 }
 
-.service-card,
-.why-card,
-.process-card,
-.process-step,
-.review-card,
-.portfolio-content {
+:is(.service-card, .why-card, .process-card, .process-step, .review-card, .portfolio-content) {
   padding: 1.25rem;
 }
 
-.service-card {
-}
-
 .service-number {
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.77rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -447,9 +446,6 @@
   margin-top: 0.54rem;
   color: var(--text-soft);
   font-size: 0.95rem;
-}
-
-.why-card {
 }
 
 .why-title {
@@ -503,12 +499,6 @@
   font-size: 0.94rem;
 }
 
-.process-card {
-}
-
-.process-step {
-}
-
 .step-chip {
   display: inline-flex;
   align-items: center;
@@ -554,7 +544,7 @@
 
 .review-name {
   margin-top: 0.94rem;
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.97rem;
   font-weight: 600;
   color: #f0f6ff;
@@ -566,11 +556,12 @@
   font-size: 0.84rem;
 }
 
+/* CTA and Contact */
 .cta-shell {
-  text-align: center;
   max-width: 880px;
   margin-inline: auto;
   padding: clamp(2rem, 4vw, 3.1rem);
+  text-align: center;
   border-color: rgba(111, 230, 255, 0.45);
   background:
     linear-gradient(148deg, rgba(21, 37, 68, 0.94), rgba(12, 22, 42, 0.88)),
@@ -617,8 +608,9 @@
   text-decoration-color: rgba(156, 238, 255, 0.45);
 }
 
+/* Footer Components */
 .footer-logo {
-  font-family: "Sora", "Manrope", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -652,6 +644,7 @@
   font-size: 0.8rem;
 }
 
+/* Responsive Components */
 @media (max-width: 1120px) {
   .hero-copy h1 {
     max-width: 17ch;
